@@ -13,6 +13,6 @@ systemctl enable mysqld
 systemctl start mysqld
 
 #Creating default password for mysql user 'root'
-mysql_secure_installaion --set-root-pass RoboShop@1
+mysql_secure_installation --set-root-pass RoboShop@1
 
 
