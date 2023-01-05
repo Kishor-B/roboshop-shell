@@ -10,7 +10,7 @@ systemctl enable mongod
 systemctl start mongod
 
 #replace default bind ID with 0.0.0.0
-sed -i -e 's/127.0.0.0/0.0.0.0/'  /etc/mongod.conf
+sed -i -e 's/127.0.0.1/0.0.0.0/'  /etc/mongod.conf
 
 #restart the mongo db service
 systemctl restart mongod
