@@ -16,6 +16,6 @@ cd /usr/share/nginx/html/
 unzip /tmp/frontend.zip
 
 #Create nginx reverse proxy file
-cp  ${HOME_DIR}/files/nginx-roboshop-rev-proxy.conf  /usr/nginx/default.d/roboshop.conf
+cp  ${HOME_DIR}/files/nginx-roboshop-rev-proxy.conf  /etc/nginx/default.d/roboshop.conf
 
 systemctl restart nginx
