@@ -1,4 +1,4 @@
-[unit]
+[Unit]
 Description = User Service
 
 [Service]
