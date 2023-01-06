@@ -1,8 +1,8 @@
 #!/bin/bash
 
 ##### Change these values ###
-ZONE_ID="Z0366464237Z7LZLZPKFA"
-DOMAIN="devopsb70.online"
+ZONE_ID="Z10057571T7JAWQ6R4WDF"
+DOMAIN="kbdevops.online"
 SG_NAME="allow-all"
 env=dev
 #############################
