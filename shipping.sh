@@ -22,5 +22,5 @@ mv target/shipping-1.0.jar shipping.jar
 cp ${HOME_DIR}/files/shipping.service  /etc/systemd/system/shipping.service
 
 labauto mysql-client
-
-mysql -h 172.31.9.129 -uroot -pRoboShop@1 < /app/schema/shipping.sql
+#mysql -h mysql-dev.kbdevops.online -uroot -pRoboShop@1 < /app/schema/shipping.sql
+mysql -h 172.31.3.154 -uroot -pRoboShop@1 < /app/schema/shipping.sql
