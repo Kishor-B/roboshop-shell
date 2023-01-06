@@ -3,7 +3,7 @@ Description = Dispatch Service
 [Service]
 User=roboshop
 #Environment=AMQP_HOST=rabbitmq-dev.kbdevops.online
-Environment=AMQP_HOST=172.
+Environment=AMQP_HOST=172.31.9.123
 Environment=AMQP_USER=roboshop
 Environment=AMQP_PASS=roboshop123
 ExecStart=/app/dispatch
