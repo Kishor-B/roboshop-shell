@@ -21,6 +21,11 @@ mv target/shipping-1.0.jar shipping.jar
 #configuration of shipping service
 cp ${HOME_DIR}/files/shipping.service  /etc/systemd/system/shipping.service
 
+#Start and load service
+systemctl daemon-reload
+systemctl enable shipping
+systemctl start shipping
+
 labauto mysql-client
 #mysql -h mysql-dev.kbdevops.online -uroot -pRoboShop@1 < /app/schema/shipping.sql
 mysql -h 172.31.3.154 -uroot -pRoboShop@1 < /app/schema/shipping.sql
