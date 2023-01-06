@@ -27,5 +27,5 @@ systemctl enable shipping
 systemctl start shipping
 
 labauto mysql-client
-#mysql -h mysql-dev.kbdevops.online -uroot -pRoboShop@1 < /app/schema/shipping.sql
-mysql -h 172.31.3.154 -uroot -pRoboShop@1 < /app/schema/shipping.sql
+mysql -h mysql-dev.kbdevops.online -uroot -pRoboShop@1 < /app/schema/shipping.sql
+#mysql -h 172.31.3.154 -uroot -pRoboShop@1 < /app/schema/shipping.sql

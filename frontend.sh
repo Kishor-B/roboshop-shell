@@ -1,7 +1,7 @@
 HOME_DIR=$(pwd)
 yum install nginx -y
 
-sytemctl enable nginx
+systemctl enable nginx
 
 systemctl start nginx
 

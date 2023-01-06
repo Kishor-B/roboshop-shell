@@ -36,8 +36,8 @@ cp ${HOME_DIR}/files/mongo.repo /etc/yum.repos.d/mongo.repo
 yum install mongodb-org-shell -y
 
 #Load schema
-#mongo --host mongodb-dev.kbdevops.online < /app/schema/catalogue.js
-mongo --host 172.31.7.197 < /app/schema/catalogue.js
+mongo --host mongodb-dev.kbdevops.online < /app/schema/catalogue.js
+#mongo --host 172.31.7.197 < /app/schema/catalogue.js
 
 
 
