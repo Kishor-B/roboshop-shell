@@ -1,4 +1,5 @@
 source common.sh
+init_serv=""
 
 print_msg "Configure the repos for erlang message server"
 curl -s https://packagecloud.io/install/repositories/rabbitmq/erlang/script.rpm.sh | sudo bash &>>${log_file}

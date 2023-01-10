@@ -64,6 +64,7 @@ package_install(){
       print_msg "Installing ${component} "
       yum install ${component} -y   &>>${log_file}
       status_check
+      [ ! -z ${init_serv} ] && start_service ${component}
 
       if [ ${component} == "nginx" ]
       then
@@ -192,7 +193,7 @@ load_db_schema(){
    labauto mysql-client     &>>${log_file}
    status_check
 
-   print_msg "Loading shipping schema"
+   print_msg "Loading ${set_service} schema"
    mysql -h mysql-dev.kbdevops.online -uroot -p${mysql_root_password} < /app/schema/${set_service}.sql      &>>${log_file}
    status_check
 
