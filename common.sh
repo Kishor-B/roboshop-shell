@@ -176,7 +176,7 @@ load_db_schema(){
  if [ $1 == "mongo" ]
  then
    print_msg "creating repo for mongo db client"
-   cp ${home_dir}/files/mongod.repo /etc/yum.repos.d/mongo.repo     &>>${log_file}
+   cp ${home_dir}/files/mongo.repo /etc/yum.repos.d/mongo.repo     &>>${log_file}
    status_check
 
    print_msg "Install mongo db client"
