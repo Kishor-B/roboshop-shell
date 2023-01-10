@@ -1,5 +1,4 @@
 source common.sh
-init_serv=""
 
 print_msg "Configure the repos for erlang message server"
 curl -s https://packagecloud.io/install/repositories/rabbitmq/erlang/script.rpm.sh | sudo bash &>>${log_file}
@@ -13,6 +12,7 @@ print_msg "#Configure the repos for rabbimq message server"
 curl -s https://packagecloud.io/install/repositories/rabbitmq/rabbitmq-server/script.rpm.sh | sudo bash &>>${log_file}
 status_check
 
+init_serv=true
 component=rabbitmq-server
 package_install
 

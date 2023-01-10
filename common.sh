@@ -64,8 +64,10 @@ package_install(){
       print_msg "Installing ${component} "
       yum install ${component} -y   &>>${log_file}
       status_check
-      [ ! -z ${init_serv} ] && start_service ${component}
-
+      if[ ${init_serv} == "true" ]
+      then
+         start_service ${component}
+      fi
       if [ ${component} == "nginx" ]
       then
         print_msg "Removing default html from nginx server"
