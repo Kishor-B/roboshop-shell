@@ -4,12 +4,19 @@ set_service=false
 
 package_install
 
+if [[ ! -e /tmp/frontend.zip ]] ;then
 print_msg "Downloading frontend source code"
 curl -o /tmp/frontend.zip https://roboshop-artifacts.s3.amazonaws.com/frontend.zip &>>${log_file}
 status_check
+else
+  print_msg "frontend source code is already avaialble, skip download again"
+fi
+
+print_msg "changing to default directory ."
+cd /usr/share/nginx/html/   &>>${log_file}
+status_check
 
 print_msg "Extract the front end content."
-cd /usr/share/nginx/html/   &>>${log_file}
 unzip /tmp/frontend.zip     &>>${log_file}
 status_check
 
