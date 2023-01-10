@@ -74,7 +74,7 @@ package_install(){
       fi
   fi
 
-  if [ ${component} == "redis" || ${component} == "mongod" ]
+  if [[ ${component} == "redis" || ${component} == "mongod" ]]
   then
     print_msg "Replace the bind id in  /etc/${component}.conf ( 127.0.0.1 to 0.0.0.0 )"
     sed -i -e 's/127.0.0.1/0.0.0.0/'  /etc/{component}.conf      &>>${log_file}
