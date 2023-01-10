@@ -184,7 +184,7 @@ load_db_schema(){
    status_check
 
    print_msg "Loading mongo db schema "
-   mongo --host mongodb-dev.kbdevops.online < /app/schema/{set_service}.js     &>>${log_file}
+   mongo --host mongodb-dev.kbdevops.online < /app/schema/${set_service}.js     &>>${log_file}
    status_check
  elif [ $1 == "mysql" ]
  then
@@ -193,7 +193,7 @@ load_db_schema(){
    status_check
 
    print_msg "Loading shipping schema"
-   mysql -h mysql-dev.kbdevops.online -uroot -p${mysql_root_password} < /app/schema/{set_service}.sql      &>>${log_file}
+   mysql -h mysql-dev.kbdevops.online -uroot -p${mysql_root_password} < /app/schema/${set_service}.sql      &>>${log_file}
    status_check
 
  fi
