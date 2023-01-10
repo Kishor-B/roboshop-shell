@@ -45,7 +45,7 @@ package_install(){
   elif [ ${component} == "mysql" ]
   then
          print_msg "configure the mysql repo for 5.7"
-         cp ${home_dir}/files/${component}.repo /etc/yum.repos.d/$${component}.repo    &>>${log_file}
+         cp ${home_dir}/files/${component}.repo /etc/yum.repos.d/${component}.repo    &>>${log_file}
          status_check
 
          print_msg "Install mysql server"
@@ -77,7 +77,7 @@ package_install(){
   if [[ ${component} == "redis" || ${component} == "mongod" ]]
   then
     print_msg "Replace the bind id in  /etc/${component}.conf ( 127.0.0.1 to 0.0.0.0 )"
-    sed -i -e 's/127.0.0.1/0.0.0.0/'  /etc/{component}.conf      &>>${log_file}
+    sed -i -e 's/127.0.0.1/0.0.0.0/'  /etc/${component}.conf      &>>${log_file}
     status_check
     start_service ${component}
   fi
@@ -176,7 +176,7 @@ load_db_schema(){
  if [ $1 == "mongo" ]
  then
    print_msg "creating repo for mongo db client"
-   cp ${home_dir}/files/mongo.repo /etc/yum.repos.d/mongo.repo     &>>${log_file}
+   cp ${home_dir}/files/mongod.repo /etc/yum.repos.d/mongo.repo     &>>${log_file}
    status_check
 
    print_msg "Install mongo db client"
