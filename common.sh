@@ -64,7 +64,7 @@ package_install(){
       print_msg "Installing ${component} "
       yum install ${component} -y   &>>${log_file}
       status_check
-      if [ ${init_serv} == "true" ]
+      if [ ${init_serv:=false} == "true" ]
       then
          start_service ${component}
       fi
