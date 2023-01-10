@@ -1,16 +1,13 @@
-#install repo file from web
-yum install https://rpms.remirepo.net/enterprise/remi-release-8.rpm -y
+source common.sh
+component=redis
 
-#***** Enable Redis6.2 from package stream ( seems developer wants to install version 6.2 )
-dnf module enable redis:remi-6.2. -y
+print_msg "install repo file from web"
+yum install https://rpms.remirepo.net/enterprise/remi-release-8.rpm -y    &>>${log_file}
+status_check
 
-#Install redis server
-yum install redis -y
+print_msg "***** Enable Redis6.2 from package stream ( seems developer wants to install version 6.2 )"
+dnf module enable redis:remi-6.2. -y    &>>${log_file}
+status_check
 
-#Replace the bind id in  /etc/redis.conf ( 127.0.0.1 to 0.0.0.0 )
-sed -i -e 's/127.0.0.1/0.0.0.0/'  /etc/redis.conf
-
-#Start the redis service
-systemctl enable redis
-systemctl start redis
+package_install
 

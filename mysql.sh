@@ -1,18 +1,12 @@
-HOME_DIR=$(pwd)
-#Centos 8 is coming with mysql default with version 8, but application needs 5.7, so disabling mysql
-dnf module disable mysql -y
+source common.sh
+component=mysql
 
-#configure the mysql repo for 5.7
-cp ${HOME_DIR}/files/mysql.repo /etc/yum.repos.d/mysql.repo
+print_msg "Centos 8 is coming with mysql default with version 8, but application needs 5.7, so disabling mysql"
+dnf module disable mysql -y   &>>${log_file}
+status_check
 
-#Install mysql server
-yum install mysql-community-server -y
 
-#start mysql service
-systemctl enable mysqld
-systemctl start mysqld
+package_install
 
-#Creating default password for mysql user 'root'
-mysql_secure_installation --set-root-pass RoboShop@1
 
 

@@ -1,22 +1,28 @@
+source common.sh
 
-#Configure the repos for erlang message server
-curl -s https://packagecloud.io/install/repositories/rabbitmq/erlang/script.rpm.sh | sudo bash
+print_msg "Configure the repos for erlang message server"
+curl -s https://packagecloud.io/install/repositories/rabbitmq/erlang/script.rpm.sh | sudo bash &>>${log_file}
+status_check
 
-#Install Erlang software for rabbitmq
-yum install erlang -y
 
-#Configure the repos for rabbimq message server
-curl -s https://packagecloud.io/install/repositories/rabbitmq/rabbitmq-server/script.rpm.sh | sudo bash
+component=erlang
+package_install
 
-#Install rabbitmq message service
-yum install rabbitmq-server -y
+print_msg "#Configure the repos for rabbimq message server"
+curl -s https://packagecloud.io/install/repositories/rabbitmq/rabbitmq-server/script.rpm.sh | sudo bash &>>${log_file}
+status_check
 
-#Start the rabbitmq server
-systemctl enable rabbitmq-server
-systemctl start rabbitmq-server
+component=rabbitmq-server
+package_install
 
-#set server credentials for rabbitmq server by erase default passwords
-rabbitmqctl add_user roboshop roboshop123
-rabbitmqctl set_user_tags roboshop administrator
-rabbitmqctl set_permissions -p / roboshop ".*" ".*" ".*"
+print_msg "set server credentials for rabbitmq server by erase default passwords"
+rabbitmqctl add_user roboshop ${rabbitmq_password}  &>>${log_file}
+status_check
 
+print_msg "Set Tags for user roboshop"
+rabbitmqctl set_user_tags roboshop administrator    &>>${log_file}
+status_check
+
+print_msg "set permissions to user roboshop"
+rabbitmqctl set_permissions -p / roboshop ".*" ".*" ".*"   &>>${log_file}
+status_check

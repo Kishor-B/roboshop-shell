@@ -1,21 +1,22 @@
-HOME_DIR=$(pwd)
-yum install nginx -y
+source common.sh
+component=nginx
+set_service=false
 
-systemctl enable nginx
+package_install
 
-systemctl start nginx
+print_msg "Downloading frontend source code"
+curl -o /tmp/frontend.zip https://roboshop-artifacts.s3.amazonaws.com/frontend.zip &>>${log_file}
+status_check
 
-#Change the default index.html that nginx webserver is serving
-rm -rf /usr/share/nginx/html/*
+print_msg "Extract the front end content."
+cd /usr/share/nginx/html/   &>>${log_file}
+unzip /tmp/frontend.zip     &>>${log_file}
+status_check
 
-#Down load content for front-end.
-curl -o /tmp/frontend.zip https://roboshop-artifacts.s3.amazonaws.com/frontend.zip
+print_msg "Create and configure nginx reverse proxy file"
+cp  ${home_dir}/files/nginx-roboshop-rev-proxy.conf  /etc/nginx/default.d/roboshop.conf     &>>${log_file}
+status_check
 
-#Extract the front end content.
-cd /usr/share/nginx/html/
-unzip /tmp/frontend.zip
-
-#Create nginx reverse proxy file
-cp  ${HOME_DIR}/files/nginx-roboshop-rev-proxy.conf  /etc/nginx/default.d/roboshop.conf
-
-systemctl restart nginx
+print_msg "Restarting nginx server"
+systemctl restart nginx     &>>${log_file}
+status_check
